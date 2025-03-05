@@ -1,7 +1,3 @@
-Below is a sample README.md file that you can include in your repository. It highlights the purpose of the project, how to use the code, and important dependencies and steps. You can tailor it further to fit your specific context and needs.
-
----
-
 # Flow Loop System for CO<sub>2</sub> Corrosion Measurement
 
 This repository contains code and supporting files for simulating a **flow loop system** used to measure corrosion under conditions relevant to CO<sub>2</sub> transport via pipelines. The goal of this project is to mitigate risks associated with CO<sub>2</sub> transport by ensuring pipelines operate under safe flow and pressure conditions.
