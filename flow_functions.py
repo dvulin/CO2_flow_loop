@@ -2,7 +2,7 @@
 """
 Created on Tue Jan 23 04:30:02 2024
 
-@author: domagoj
+@author: domagoj pokusaj commita
 """
 from scipy.optimize import fsolve
 from numpy.ma.core import log10
