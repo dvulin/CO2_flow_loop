@@ -2,7 +2,7 @@
 """
 Created on Tue Jan 23 04:30:02 2024
 
-@author: domagoj pokusaj commita
+@author: domagoj
 """
 from scipy.optimize import fsolve
 from numpy.ma.core import log10
@@ -93,7 +93,7 @@ def dp_table_pure(lookup_table, L, A, d_in, e, p1, T1, qm, nsteps = 10):
     p1 = p2
   return df_dp
 
-@jit
+@jit(forceobj=True)
 def dp_table(lookup_table, L, A, d_in, e, p1, T1, qm, nsteps = 10):
   points = lookup_table[['p', 't']].values
   df_dp = pd.DataFrame(columns=['L', 'p1', 't', 'mu', 'rho_g', 'u', 'Re', 'ff', 'dp', 'p2'])

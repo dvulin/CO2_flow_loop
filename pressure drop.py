@@ -5,10 +5,14 @@ Created on Thu Jan 18 21:35:28 2024
 @author: domagoj
 
 """
+import sys
+print(sys.path)
+
 from numpy.ma.core import log10
 import numpy as np
 import pandas as pd
 import warnings
+import os
 warnings.filterwarnings("ignore")
 from flow_functions import *
 from other_functions import *
@@ -102,6 +106,8 @@ for qm in Q:
                     new_row = {'p_in': p1/1e5, 'd_in':D, 'e': e, 'p_out': p2}
                     df_summary = df_summary._append(new_row, ignore_index = True)
         directory = f'case_{int(qm/(1e6 / (365*24*3600)))}/'
+        if not os.path.exists(directory):
+             os.makedirs(directory)
         df_summary.to_csv(f'{directory}{case}_summary_nsteps_{nsteps}_t_{int(T1-273.15)}.txt')
         print (f'saved to: {directory}{case}_summary_nsteps_{nsteps}_t_{int(T1-273.15)}.txt')
         
