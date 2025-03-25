@@ -54,12 +54,19 @@ boosters = False                     # @param {type:"boolean"}
 p_l, t_l, dp_l, rho_g_l = [], [], [], []
 dfi = pd.DataFrame(columns=['L', 'p1', 't', 'mu', 'rho_g', 'u', 'Re', 'ff', 'dp', 'p2'])
 
-d_in = np.array([123.9, 241.1, 323.6, 374.4, 510])/1000             # m
+d_in = np.array([241.1])/1000             # m
 wthick = np.array([16, 16 ,16, 16, 16])                             #
-p_in = (np.array([35, 40, 45, 50, 90])*1e5)                         # Pa
-e_i = np.array([0.1, 0.075, 0.05, 0.025, 0.01])/1000                # m
-T = np.array([10, 20, 30, 40, 50, 60])+273.15                       # K
-Q = np.array([750, 1500])*1e6/(365*24*3600)                         # kg/s
+p_in = (np.array([40, 50])*1e5)                         # Pa
+e_i = np.array([0.05, 0.025])/1000                # m
+T = np.array([40])+273.15                       # K
+Q = np.array([752])*1e6/(365*24*3600)     
+
+#d_in = np.array([123.9, 241.1, 323.6, 374.4, 510])/1000             # m
+#wthick = np.array([16, 16 ,16, 16, 16])                             #
+#p_in = (np.array([35, 40, 45, 50, 90])*1e5)                         # Pa
+#e_i = np.array([0.1, 0.075, 0.05, 0.025, 0.01])/1000                # m
+#T = np.array([10, 20, 30, 40, 50, 60])+273.15                       # K
+#Q = np.array([750, 1500])*1e6/(365*24*3600)                      # kg/s
 
 # d_in = np.array([325.42])/1000 
 # p_in = (np.array([40])*1e5)
@@ -103,6 +110,7 @@ for qm in Q:
             for D in d_in:
                 for e in e_i: 
                     p2 = parameter_sensitivity[p1][D][e]['p2'].iloc[-1]
+                    print(f'p2: {p2}')
                     new_row = {'p_in': p1/1e5, 'd_in':D, 'e': e, 'p_out': p2}
                     df_summary = df_summary._append(new_row, ignore_index = True)
         directory = f'case_{int(qm/(1e6 / (365*24*3600)))}/'
