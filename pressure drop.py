@@ -5,9 +5,6 @@ Created on Thu Jan 18 21:35:28 2024
 @author: domagoj
 
 """
-import sys
-print(sys.path)
-
 from numpy.ma.core import log10
 import numpy as np
 import pandas as pd
@@ -54,12 +51,12 @@ boosters = False                     # @param {type:"boolean"}
 p_l, t_l, dp_l, rho_g_l = [], [], [], []
 dfi = pd.DataFrame(columns=['L', 'p1', 't', 'mu', 'rho_g', 'u', 'Re', 'ff', 'dp', 'p2'])
 
-d_in = np.array([241.1])/1000             # m
+d_in = np.array([315.925])/1000             # m
 wthick = np.array([16, 16 ,16, 16, 16])                             #
-p_in = (np.array([40, 50])*1e5)                         # Pa
-e_i = np.array([0.05, 0.025])/1000                # m
-T = np.array([40])+273.15                       # K
-Q = np.array([752])*1e6/(365*24*3600)     
+p_in = (np.array([40])*1e5)                         # Pa
+e_i = np.array([0.1])/1000                # m
+T = np.array([20])+273.15                       # K
+Q = np.array([750])*1e6/(365*24*3600)     
 
 #d_in = np.array([123.9, 241.1, 323.6, 374.4, 510])/1000             # m
 #wthick = np.array([16, 16 ,16, 16, 16])                             #
@@ -95,6 +92,7 @@ for qm in Q:
                     p_1 = p1
                     now = datetime.datetime.now()
                     print (f'         +--- {now.strftime(timeformat)}:  roughness = {e} m')
+                    print(f'A {A} {p1} Pa, {D} diameter(m), {nsteps} steps, {L} length(m), {T1} K, {qm} kg/m3, {e} pipe roughness')
                     dfi = dp_table(lookup_table = df_lookup, 
                                    L = L, A = A, d_in = D, 
                                    e = e, p1 = p1, T1=T1, 

@@ -91,6 +91,7 @@ def dp_table_pure(lookup_table, L, A, d_in, e, p1, T1, qm, nsteps = 10):
     p2 = p1 - dP
     df_dp.loc[i] = [(i+1)*(L/nsteps), p1/1e5, T1-273.15, mu, rho_gas, u, Re, ff, dP/1e5, p2/1e5]
     p1 = p2
+    print(f'p2 = {p2}')
   return df_dp
 
 @jit(forceobj=True)
@@ -108,5 +109,6 @@ def dp_table(lookup_table, L, A, d_in, e, p1, T1, qm, nsteps = 10):
     p2 = p1 - dP
     df_dp.loc[i] = [(i+1)*(L/nsteps), p1/1e5, T1-273.15, mu, rho_gas, u, Re, ff, dP/1e5, p2/1e5]
     p1 = p2
+    print(f'{i+1} p2 = {p2}')
   return df_dp
 
