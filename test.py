@@ -5,9 +5,6 @@ url = "http://127.0.0.1:8000/calculate"
 #url = "https://test-production-f873.up.railway.app/calculate"
 
 
-#namjesteni parametri da se covjek ne muci sa POST-o ako ne mora (40,40000) kao dole
-# url = "https://test-production-f873.up.railway.app/calculateBlank"
-
 begin = datetime.datetime.now()
 
 input_data = {
