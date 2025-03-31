@@ -33,7 +33,7 @@ def f_Colebrook_White(D, Re, e):
 def Reynolds(rho, u, D, mu):
     """
     Parameters
-    ----------
+    ----------_
     rho : float
         density (ρ) of the fluid (SI units: kg/m3).
     u : float
