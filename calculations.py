@@ -34,7 +34,7 @@ def calculate_steps(steps: int, length: int, d_in: float, e: float, p: float, tK
             raise e
     ###################################################################################        
 
-    dfi = pd.DataFrame(columns=['L', 'p1', 't', 'mu', 'rho_g', 'u', 'Re', 'ff', 'dp', 'p2'])
+    dfi = pd.DataFrame(columns=['step', 'L', 'p1', 't', 'mu', 'rho_g', 'u', 'Re', 'ff', 'dp', 'p2'])
     TIMEFORMAT = "%H:%M:%S"
     
     calc_instance = Calc()
