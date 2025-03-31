@@ -40,7 +40,7 @@ za odabir posluzilo:
 Peletiri 2018, Table 1 - 0.325 m?
 u literaturi za CO2 iz postrojenja za etanol, rasponi su 4 do 8 inch za priključne cjevovode
 """
-A = 0.25*np.pi*D**2
+
 qm = 650                             # @param qm (float) = 700   # ktpa
 qm = qm * 1e6 / (365*24*3600)        # mass flow rate (kg/s) of CO2 stream = 700 kt/y = 22.19685438863521 kg/s
 nsteps = 40                         # @param nsteps (int) = 25  # number of steps
@@ -76,6 +76,7 @@ for qm in Q:
             now = datetime.datetime.now()
             print (f'+- p_in = {p1} Pa')
             for D in d_in:
+                A = 0.25*np.pi*D**2
                 now = datetime.datetime.now()
                 print (f'   +--- {now.strftime(timeformat)}:  d_in = {D} m')
                 dfi = pd.DataFrame(columns=['L', 'p1', 't', 'mu', 'rho_g', 'u', 'Re', 'ff', 'dp', 'p2'])
