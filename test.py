@@ -8,7 +8,7 @@ url = "http://127.0.0.1:8000/calculate"
 begin = datetime.datetime.now()
 
 input_data = {
-    "nsteps": 3,
+    "nsteps": 1,
     "L": 40000, 
     "d_in": 0.315925,
     "e": 0.0001,
