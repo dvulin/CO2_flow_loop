@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 from calculations import calculate_steps
 from Classes.models import InputModel
 from Classes.LoggerSingleton import LoggerSingleton
+from Classes.PengRobinsonCalc import PengRobinsonCalc
 from fastapi.responses import JSONResponse
 import pandas as pd
 
@@ -35,6 +36,34 @@ async def calculate(input_data: InputModel = None, request: Request = None):
         LoggerSingleton().log_info(f"Exception: Received input data from {request.client.host}: {input_data}, error: {e}")
         raise HTTPException(status_code=400, detail=str("Exception: " + e.__str__()))
     
+
+@app.get("/eos_calc")
+async def eos_calc(input_data: InputModel = None, request: Request = None):
+    
+    LoggerSingleton().log_info(f"Received input data from {request.client.host}")
+
+    try:
+        components = {
+            "CO2":  {"Tc": 304.2, "Pc": 73.8, "omega": 0.225},
+            "CH4":  {"Tc": 190.6, "Pc": 46.0, "omega": 0.011},
+            "C3H8": {"Tc": 369.8, "Pc": 42.5, "omega": 0.152}
+        }
+    
+        T = 350  # K
+        P = 50   # bar
+        z = [0.7, 0.2, 0.1]
+        eos_solver = PengRobinsonCalc(components, T, P, z)
+        results = eos_solver.solve_phase_equilibrium()
+        print(results)
+
+    except ValueError as e:
+        LoggerSingleton().log_info(f"ValueError: Received input data from {request.client.host}: {input_data}, error: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        LoggerSingleton().log_info(f"Exception: Received input data from {request.client.host}: {input_data}, error: {e}")
+        raise HTTPException(status_code=400, detail=str("Exception: " + e.__str__()))
+
+
 @app.middleware("http")
 async def log_errors_middleware(request: Request, call_next):
     try:
