@@ -1,7 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 
-class InputModel(BaseModel):
+class FlowInputModel(BaseModel):
     nsteps: Optional[int] = 2
     L: Optional[int] = 40000
     d_in: Optional[float] = 0.315925

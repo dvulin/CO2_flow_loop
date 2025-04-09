@@ -1,8 +1,8 @@
 import requests
 import datetime
 
-url = "http://127.0.0.1:8000/calculate"
-#url = "https://test-production-f873.up.railway.app/calculate"
+url = "http://127.0.0.1:8000/calculate_flow"
+#url = "https://test-production-f873.up.railway.app/calculate_flow"
 
 
 begin = datetime.datetime.now()
@@ -16,7 +16,7 @@ input_data = {
     "T": 293.15,
     "qm": 23.75,
     "case": "case1",   
-    "visual": 1
+    "visual": 0
 }
 
 response = requests.post(url, json=input_data)

@@ -6,7 +6,7 @@ from scipy.interpolate import griddata
 import CoolProp.CoolProp as CP
 from numba import jit
 
-class Calc:
+class Flow:
     def __init__(self):
         pass
 
