@@ -1,9 +1,8 @@
 import requests
-import json
 
 
-url = "http://127.0.0.1:8000/eos_calc"
-#url = "https://test-production-f873.up.railway.app/eos_calc"
+#url = "http://127.0.0.1:8000/eos_calc"
+url = "https://test-production-f873.up.railway.app/eos_calc"
 
 data = {
     "components": [

@@ -1,8 +1,8 @@
 import requests
 import datetime
 
-url = "http://127.0.0.1:8000/calculate_flow"
-#url = "https://test-production-f873.up.railway.app/calculate_flow"
+#url = "http://127.0.0.1:8000/calculate_flow"
+url = "https://test-production-f873.up.railway.app/calculate_flow"
 
 
 begin = datetime.datetime.now()
